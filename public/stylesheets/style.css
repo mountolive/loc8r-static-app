@@ -49,7 +49,7 @@ legend {
   margin-bottom: 0.5em;
 }
 
-.badge-default, .btn-primary {
+.badge-default, .btn-primary, button#add-review, a#add-review {
   background-color: #ad1d28;
   border-color: #911821;
 }

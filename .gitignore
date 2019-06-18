@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 tags
+.tern-port
 
 # Runtime data
 pids
