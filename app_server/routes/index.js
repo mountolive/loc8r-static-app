@@ -5,8 +5,8 @@ const router = express.Router();
 
 /* LOCATIONS ROUTES */
 router.get('/', locationsController.homeList);
-router.get('/locations', locationsController.locationInfo);
-router.get('/locations/review/new', locationsController.addReview);
+router.get('/locations/:name', locationsController.locationInfo);
+router.get('/locations/review/new/:name', locationsController.addReview);
 
 /* OTHERS ROUTES */
 router.get('/about', othersController.about);

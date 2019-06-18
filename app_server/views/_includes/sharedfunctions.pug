@@ -1,0 +1,35 @@
+mixin outputRating(rating)
+  small &nbsp;
+    - for(let i = 1; i <= rating; i++)
+      i.fas.fa-star
+    - for(let i = rating; i <= 5; i++)
+      i.far.fa-star
+
+mixin openingHours(openings)
+  - for(let i = 0, n = openings.length; i < n; i++)
+    p.card-text= openings[i] 
+
+mixin getFacilities(facilities) 
+  - let n = facilities.length
+  - for(let i = 0; i < n; i++)
+    span.badge.badge-warning
+      i.fa.fa-check
+      | &nbsp;#{facilities[i]}
+    | &nbsp;
+
+mixin outputReviews(reviews)
+  - let n = reviews.length
+  - for(let i = 0; i < n; i++)
+    .row.review
+      .col-12.no-gutters.review-header
+        span.rating
+          - let n = reviews[i].rating
+          - for(let i = 1; i <= n; i++)
+            i.fas.fa-star
+          - for(let i = n; i <= 5; i++)
+            i.far.fa-star
+        span.reviewAuthor &nbsp; #{reviews[i].author}
+        small.reviewTimestamp &nbsp; #{reviews[i].date}
+      .col-12
+        p= reviews[i].review
+
