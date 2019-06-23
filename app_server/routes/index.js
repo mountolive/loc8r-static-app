@@ -2,7 +2,7 @@ const express = require('express');
 const locationsController = require('../controllers/locations');
 const othersController = require('../controllers/others');
 const router = express.Router();
-require('../models/db');
+require('../database/db');
 
 /* LOCATIONS ROUTES */
 router.get('/', locationsController.homeList);

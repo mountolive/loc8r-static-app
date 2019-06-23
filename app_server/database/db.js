@@ -4,17 +4,20 @@ const env = process.env;
 const user = env.LOC8R_USERNAME; 
 const pass = env.LOC8R_PASSWORD;
 const db = env.LOC8R_DATABASE;
+const nEnv = env.NODE_ENV;
 
 const conn = mongoose.connection;
 
 const  createCleanUrl = () => {
-  const host = env.LOC8R_HOST;
-  if(host in ['127.0.0.1', 'localhost']) {
-    const port = env.LOC8R_PORT ? env.LOC8R_PORT : 27017;
-    return ['mongodb', `${host}:${port}/${db}`];
+  let host = env.LOC8R_HOST;
+  // we have only production and development
+  if(nEnv) {
+    host = env.LOC8R_REMOTE_HOST;
+    return ['mongodb+srv', `${host}/${db}?retryWrites=true&w=majority`];
   }
 
-  return ['mongodb+srv', `${host}/${db}?retryWrites=true&w=majority`];
+  const port = env.LOC8R_PORT ? env.LOC8R_PORT : 27017;
+  return ['mongodb', `${host}:${port}/${db}`];
 };
 
 const [protocol, cleanUrl] = createCleanUrl();
@@ -63,4 +66,4 @@ process.on('SIGTERM', () => {
   _termination('Heroku app shutdown');
 });
 
-require('./location');
+require('../models/location');
