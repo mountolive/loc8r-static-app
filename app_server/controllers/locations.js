@@ -1,6 +1,7 @@
 // Mock locations data
 const locations = 
 [{
+  id: 1,
   name: 'El panal',
   address: 'Cualquier Address, 100, Carabobo, Venezuela',
   rating: 3,
@@ -21,6 +22,7 @@ const locations =
     review: "Nice!"
   }],
 }, {
+  id: 2,
   name: 'Il Dolce',
   address: 'Cualquier Address, 101, Carabobo, Venezuela',
   rating: 5,
@@ -41,6 +43,7 @@ const locations =
     review: "Nice!"
   }],
 }, {
+  id: 3,
   name: 'Patisserie',
   address: 'Cualquier Address, 100, Carabobo, Venezuela',
   rating: 1,
@@ -62,10 +65,6 @@ const locations =
   }],
 }];
 
-const setLocation = function(selected) {
-  return locations.find((loc) => { return loc.name === selected; });
-};
-
 const homeList = function(req, res) {
   res.render('locations-list', 
     {
@@ -75,19 +74,23 @@ const homeList = function(req, res) {
         strapline: 'Find places to work with wifi near you!',
       },
       locations: locations,
-      setLocation: setLocation,
     });
 };
 
 const locationInfo = function(req, res) {
-  res.render('location-info', {place: setLocation(req.params.name)});
+  res.render('location-info', {place: _setLocation(req.params.id)});
 };
 
 const addReview = function(req, res) {
   res.render('location-review-form', 
                       {
                           title: 'Add Review', 
-                          place: req.params.name,                                                });
+                          place: req.params.name,
+                      });
+};
+
+const _setLocation = function(selected) {
+  return locations.find((loc) => { return loc.id === (selected >>> 0); });
 };
 
 module.exports = {

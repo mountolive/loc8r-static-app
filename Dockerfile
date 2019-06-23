@@ -1,4 +1,4 @@
-FROM node:11.11.0
+FROM node:11.11.0-alpine
 
 RUN apt update && apt install curl autoconf coreutils python && npm install -g nodemon
 

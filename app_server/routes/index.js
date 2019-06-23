@@ -2,11 +2,12 @@ const express = require('express');
 const locationsController = require('../controllers/locations');
 const othersController = require('../controllers/others');
 const router = express.Router();
+require('../models/db');
 
 /* LOCATIONS ROUTES */
 router.get('/', locationsController.homeList);
-router.get('/locations/:name', locationsController.locationInfo);
-router.get('/locations/review/new/:name', locationsController.addReview);
+router.get('/locations/:id', locationsController.locationInfo);
+router.get('/locations/review/new/:id', locationsController.addReview);
 
 /* OTHERS ROUTES */
 router.get('/about', othersController.about);
