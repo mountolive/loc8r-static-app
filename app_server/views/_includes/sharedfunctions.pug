@@ -7,7 +7,10 @@ mixin outputRating(rating)
 
 mixin openingHours(openings)
   - for(let i = 0, n = openings.length; i < n; i++)
-    p.card-text= openings[i] 
+    - if(!openings[i].closed)
+      p.card-text #{openings[i].days}:  #{openings[i].opening}-#{openings[i].closing}
+    - else
+      p.cart-text #{openings[i].days}:  Closed!
 
 mixin getFacilities(facilities) 
   - let n = facilities.length
@@ -26,10 +29,11 @@ mixin outputReviews(reviews)
           - let n = reviews[i].rating
           - for(let i = 1; i <= n; i++)
             i.fas.fa-star
-          - for(let i = n; i <= 5; i++)
+          - for(let i = n; i < 5; i++)
             i.far.fa-star
         span.reviewAuthor &nbsp; #{reviews[i].author}
-        small.reviewTimestamp &nbsp; #{reviews[i].date}
+        small.reviewTimestamp &nbsp;  #{reviews[i].date}
+
       .col-12
-        p= reviews[i].review
+        p= reviews[i].reviewText
 

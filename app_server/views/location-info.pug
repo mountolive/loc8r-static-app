@@ -15,7 +15,7 @@ block content
           .cards.card-primary
             .card-block
               h2.card-title Opening hours
-              +openingHours(place.opening)
+              +openingHours(place.openingTimes)
           .cards.card-primary
             .card-block
               h2.card-title Facilities
@@ -29,7 +29,7 @@ block content
         .col-12
           .cards.card-primary.review-card
             .card-block
-              a#add-review.btn.btn-primary.float-right(href=`/locations/review/new/${place.id}`) Add review
+              a#add-review.btn.btn-primary.float-right(href=`/locations/review/new/${place._id}`) Add review
               h2.card-title Customer reviews
               +outputReviews(place.reviews)
     .col-12.col-lg-3

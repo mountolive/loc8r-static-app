@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  server:
+    build: .
+    container_name: server
+    command: nodemon
+    volumes:
+      - .:/loc8r
+    ports:
+      - "3000:3000"
+    external_links:
+      - mongodb
+    environment:
+      WAIT_HOST: mongo:27017
+    environment:
+      - LOC8R_USERNAME
+      - LOC8R_PASSWORD
+      - LOC8R_HOST=mongodb
+      - LOC8R_DATABASE
+      - LOC8R_REMOTE_HOST
+    networks:
+      - application
+
+networks:
+  application:

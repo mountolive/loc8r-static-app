@@ -3,14 +3,14 @@ extends layout
 block content
   .row.banner
     .col-12
-      h1 Review #{place}
+      h1 Review
   .row
     .col-12.col-md-8
-      form(action='/locations', method='get', role='form')
+      form(action=`/locations/review/new/${id}`, method='post', role='form')
         .form-group.row
-          label.col-10.col-sm-2.col-form-label(for='name') Name
+          label.col-10.col-sm-2.col-form-label(for='author') Name
           .col-12.col-sm-10
-            input#name.form-control(for='name')
+            input#name.form-control(name='author')
         .form-group.row
           label.col-10.col-sm-2.col-form-label(for='rating') Rating
           .col-12.col-sm-2
@@ -21,8 +21,8 @@ block content
               option 2
               option 1
         .form-group.row
-          label.col-sm-2.col-form-label(for='review') Review
+          label.col-sm-2.col-form-label(for='reviewText') Review
           .col-sm-10
-            textarea#review.form-control(name='review', rows='5')
+            textarea#review.form-control(name='reviewText', rows='5')
         button#add-review.btn.btn-primary.float-right Add my review
     .col-12.col-md-4
