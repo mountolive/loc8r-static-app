@@ -30,15 +30,11 @@ class BaseService {
   }
 
   _findQuery(res, next, methodName, error, success, posId) {
-    try {
     this.model[methodName](posId)
         .exec((err, doc) => {
           if(err) error(res, err);
           else success(res, doc);
         });
-    } catch(err) {
-      console.log(`Error happens here ${err}`);
-    }
   }
 
   _createQuery(res, next, error, success, args) {
