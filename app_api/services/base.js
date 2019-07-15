@@ -36,7 +36,7 @@ class BaseService {
           if(err) error(res, err);
           else success(res, doc);
         });
-    catch(err) {
+    } catch(err) {
       console.log(`Error happens here ${err}`);
     }
   }
