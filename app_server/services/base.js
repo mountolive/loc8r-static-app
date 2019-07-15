@@ -9,6 +9,7 @@ class BaseService {
       if(err) error(res, err);
       else if([200, 201, 204].includes(res.statusCode)) success(body);
       else if(res.statusCode === 404) {
+        console.log("COÑO DE LA MADRE ESTOY AQUI");
         error(res, {code: 404, errorMessage: 'No documents found'});
       }
     });
