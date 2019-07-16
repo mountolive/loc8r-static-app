@@ -5,7 +5,7 @@ const apiOpts = {
 };
 
 if(process.env.NODE_ENV === 'production')
-  apiOpts.server = 'https://safe-crag-43305.herokuapp.com/';
+  apiOpts.server = 'https://safe-crag-43305.herokuapp.com/api';
 
 module.exports = {
   request,

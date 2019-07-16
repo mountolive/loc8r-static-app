@@ -9,7 +9,8 @@ class LocationService extends BaseService {
 
   listByDistance(lat, lng, maxDistance, error, success) {
     //TODO: Remove. For testing purposes
-    [lng, lat, maxDistance] = [-0.9690884, 51.455041, 2000000];
+    //[lng, lat, maxDistance] = [-0.9690884, 51.455041, 2000000];
+    [lng, lat, maxDistance] = [22, 22, 22];
     const reqOptions = {
       url: this.baseUri,
       method: 'GET',
