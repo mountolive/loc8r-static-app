@@ -1,7 +1,9 @@
 extends layout
 
 block content
+  br
+  br
+  br
   h1= message
-  h2= error.code
-  pre #{process.env.NODE_ENV === 'production' ? '' : error.stack}
+  h2= error.statusCode
 

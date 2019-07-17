@@ -1,6 +1,10 @@
 const resolveError = (res, err) => {
-  res.render('error', {error: err, message: 'Ups! an error occurred'});
-  console.log(err.stack);
+  console.log(err);
+  const {stackTrace, message} = err.body;
+  res.render('generic-text', {error: err, 
+                              stackTrace,
+                              message,
+                              title: 'Ups! an error occurred'});
 };
 
 module.exports = resolveError;

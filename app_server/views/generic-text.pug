@@ -4,6 +4,9 @@ block content
   .row.banner
     .col-12
       h1= title
+      h2= error.statusCode
+      - if(process.env.NODE_ENV !== 'production')
+        pre #{stackTrace || message} 
   .row
     .col-12.col-lg-8
       p

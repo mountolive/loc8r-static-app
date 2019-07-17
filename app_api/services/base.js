@@ -1,3 +1,4 @@
+const notFound = require('../handlers/error-codes').notFound;
 const mongoose = require('mongoose');
 
 class BaseService {
@@ -33,6 +34,8 @@ class BaseService {
     this.model[methodName](posId)
         .exec((err, doc) => {
           if(err) error(res, err);
+          else if(!doc) notFound(res, `: Sorry, location with id 
+                                      ${posId} not found`);
           else success(res, doc);
         });
   }
@@ -52,6 +55,8 @@ class BaseService {
     this.model[methodName](id, payload)
         .exec((err, doc) => {
           if(err) error(res, err);
+          else if(!doc) notFound(res, `: Sorry, location with id 
+                                      ${id} not found`);
           else success(res, doc);
         });
   }
