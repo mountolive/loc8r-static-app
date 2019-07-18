@@ -7,9 +7,7 @@ const reviewService = new ReviewService();
 const homeList = function(req, res) {
   const {lat, lng, maxDistance} = req.params;
   locationService.listByDistance(lat, lng, maxDistance, 
-    (err) => {
-      resolveError(res, err);
-    }, 
+    (err) => resolveError(res, err), 
     (locations) => {
       let message;
       if(!locations.length)
@@ -30,12 +28,8 @@ const homeList = function(req, res) {
 const locationInfo = function(req, res) {
   const id = req.params.id;
   locationService.readOne(id, 
-    (err) => {
-      resolveError(res, err);
-    }, 
-    (loc) => {
-      _renderLocationInfo(res, loc);
-    });
+    (err) => resolveError(res, err), 
+    (loc) =>_renderLocationInfo(res, loc));
 };
 
 const addReview = function(req, res) {
@@ -47,11 +41,9 @@ const addReview = function(req, res) {
 };
 
 const createReview = function(req, res) {
-  reviewService.create(req.params, req.body, (err) => {
-    resolveError(res, err);
-  }, (loc) => {
-    _renderLocationInfo(res, loc);
-  });
+  reviewService.create(req.params, req.body, 
+    (err) => resolveError(res, err), 
+    (loc) => _renderLocationInfo(res, loc));
 };
 
 const _renderLocationInfo = function(res, loc) {
