@@ -47,7 +47,6 @@ const createReview = function(req, res) {
 };
 
 const _renderLocationInfo = function(res, loc) {
-  console.log(loc);
   loc.distance = _convertDistance(loc.distance);
   res.render('location-info', {place: _setTimes(loc)});
 };
