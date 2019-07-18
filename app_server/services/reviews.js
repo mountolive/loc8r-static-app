@@ -15,9 +15,9 @@ class ReviewService extends BaseService {
       url: this.baseUri.replace(':lid', locationId),
       method: 'POST',
       json: {
-        rating: rating,
-        author: author,
-        reviewText: reviewText,
+        rating,
+        author,
+        reviewText,
       },
       qs: {},
     };

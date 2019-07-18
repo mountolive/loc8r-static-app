@@ -21,10 +21,14 @@ const reviewSchema = new mongoose.Schema({
     min: 0,
     max: 5,
   },
-  author: String,
+  author: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     'default': Date.now,
+    required: true,
   },
   reviewText: String,
 });

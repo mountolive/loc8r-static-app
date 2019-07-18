@@ -1,5 +1,4 @@
 const resolveError = (res, err) => {
-  console.log(err);
   const {stackTrace, message} = err.body;
   res.render('generic-text', {error: err, 
                               stackTrace,

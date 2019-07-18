@@ -3,26 +3,29 @@ extends layout
 block content
   .row.banner
     .col-12
-      h1 Review
+      h1= title
   .row
     .col-12.col-md-8
       form(action=`/locations/review/new/${id}`, method='post', role='form')
+        - if(error === 'val')
+          .alert.alert-danger(role='alert') All fields are required, please try again
         .form-group.row
           label.col-10.col-sm-2.col-form-label(for='author') Name
           .col-12.col-sm-10
-            input#name.form-control(name='author')
+            input#name.form-control(name='author', required)
         .form-group.row
           label.col-10.col-sm-2.col-form-label(for='rating') Rating
           .col-12.col-sm-2
-            select#rating.form-control.input-sm(name='rating')
+            select#rating.form-control.input-sm(name='rating', required)
               option 5
               option 4
               option 3
               option 2
               option 1
+              option 0
         .form-group.row
           label.col-sm-2.col-form-label(for='reviewText') Review
           .col-sm-10
-            textarea#review.form-control(name='reviewText', rows='5')
+            textarea#review.form-control(name='reviewText', rows='5', required)
         button#add-review.btn.btn-primary.float-right Add my review
     .col-12.col-md-4

@@ -26,7 +26,6 @@ class ReviewService {
         if(err) error(res, err);
         else success(res, doc);
       });
-
     });
   }
 

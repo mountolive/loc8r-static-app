@@ -37,10 +37,14 @@ const addReview = function(req, res) {
                       {
                           title: 'Add Review', 
                           id: req.params.id,
+                          error: req.query.err,
                       });
 };
 
 const createReview = function(req, res) {
+  const body = req.body;
+  if(!(body.rating && body.author && body.reviewText))
+    res.redirect(`${req.params.id}?err=val`);
   reviewService.create(req.params, req.body, 
     (err) => resolveError(res, err), 
     (loc) => _renderLocationInfo(res, loc));
@@ -63,7 +67,7 @@ const _setTimes = function(loc) {
   return loc;
 };
 
-const _setDistanceLocations = (locations) => {
+const _setDistanceLocations = function(locations) {
   return locations.map((l) => {
     l.distance = _convertDistance(l.distance);
     return l;
@@ -75,7 +79,7 @@ const _convertTime = function(mins) {
   return `${(mins - extra) / 60}:${extra > 9 ? extra : extra + "0"}`;
 };
 
-const _convertDistance = (distance) => {
+const _convertDistance = function(distance) {
   if(distance > 1000) {
     distance = (distance / 1000) >>> 0;
     return distance + 'km';
@@ -84,7 +88,7 @@ const _convertDistance = (distance) => {
   }
 };
 
-const _setTimeString = (reviews) => {
+const _setTimeString = function(reviews) {
   return reviews.map(r => {
     r.date = new Date(r.date);
     r.date = `${r.date.getFullYear()}-${r.date.getMonth()}-${r.date.getDate()}`; 
