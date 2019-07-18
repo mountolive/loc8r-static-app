@@ -49,8 +49,6 @@ class LocationService extends BaseService {
         rating: loc.rating,
         facilities: loc.facilities,
         distance: loc.distance.calculated.toFixed(),
-        lng: loc.coords[0],
-        lat: loc.coords[1],
       };
     });
   }

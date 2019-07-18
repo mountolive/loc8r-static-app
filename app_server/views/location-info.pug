@@ -24,7 +24,7 @@ block content
           .cards.card-primary
             .card-block
               h2.card-title Location map
-              img.img-fluid.rounded(src=`https://maps.googleapis.com/maps/api/staticmap?center=${place.lat},${place.lng}&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2&key=${process.env.GOOGLE_MAP_KEY}`)
+              img.img-fluid.rounded(src=`https://maps.googleapis.com/maps/api/staticmap?center=${place.coords[1]},${place.coords[0]}&zoom=17&size=400x350&sensor=false&markers=${place.coords[1]},${place.coords[1]}&scale=2&key=${process.env.GOOGLE_MAP_KEY}`)
       .row
         .col-12
           .cards.card-primary.review-card
