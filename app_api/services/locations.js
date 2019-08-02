@@ -9,10 +9,10 @@ class LocationService extends BaseService {
   async listByDistance(req, res, next, success, error) {
     const { lat, lng, maxDistance } = req.query;
     if(this._isAnyNaN(lat, lng, maxDistance)) {
-      return error(res, new URIError(`Params must have 
-                                      numerical values. 
-                                      You have to pass lat, 
-                                      lng and maxDistance`));
+      return error(res, new URIError('Params must have ' +
+                                     'numerical values. ' +
+                                     'You have to pass lat, ' +
+                                     'lng and maxDistance '));
     }
 
     const near = {

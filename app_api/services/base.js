@@ -34,8 +34,8 @@ class BaseService {
     this.model[methodName](posId)
         .exec((err, doc) => {
           if(err) error(res, err);
-          else if(!doc) notFound(res, `: Sorry, location with id 
-                                      ${posId} not found`);
+          else if(!doc) notFound(res, ': Sorry, location with id ' +
+                                      '${posId} not found');
           else success(res, doc);
         });
   }
@@ -49,14 +49,14 @@ class BaseService {
 
   _findAndExecQuery(res, next, methodName, error, success, id, payload) {
     if(methodName === 'findByIdAndUpdate' && !payload) {
-      return error(res, new Error(`You need to pass a payload(body) 
-                                   to update`));
+      return error(res, new Error('You need to pass a payload(body) ' + 
+                                  'to update'));
     }
     this.model[methodName](id, payload)
         .exec((err, doc) => {
           if(err) error(res, err);
-          else if(!doc) notFound(res, `: Sorry, location with id 
-                                      ${id} not found`);
+          else if(!doc) notFound(res, ': Sorry, location with id ' + 
+                                      '${id} not found');
           else success(res, doc);
         });
   }

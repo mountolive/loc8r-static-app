@@ -4,7 +4,7 @@ block content
   .row.banner
     .col-12
       h1= title
-      h2= error.statusCode
+      h2= `${error ? error.statusCode : ''}`
       - if(process.env.NODE_ENV !== 'production')
         pre #{stackTrace || message} 
   .row
